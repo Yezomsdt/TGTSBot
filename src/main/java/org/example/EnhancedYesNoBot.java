@@ -17,7 +17,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-
 public class EnhancedYesNoBot extends TelegramLongPollingBot {
 
     private final String botUsername;
@@ -26,7 +25,6 @@ public class EnhancedYesNoBot extends TelegramLongPollingBot {
     private final String telegramUsername = "DAAAYUM";
     private final String[] imageResponses = {"Епт", "Красевое", "Ух ты!", "Кринж", "Убей себя"};
     private final String[] textResponses = {"Да", "Нет", "Может быть ¯\\_(ツ)_/¯"};
-
 
     public EnhancedYesNoBot(String botUsername, String botToken) {
         this.botUsername = botUsername;
@@ -52,7 +50,7 @@ public class EnhancedYesNoBot extends TelegramLongPollingBot {
                 } else if (update.getMessage().hasPhoto()) {
                     handleImageMessage(update);
                 }
-            } else if (update.hasCallbackQuery()) { // Обработка нажатия кнопки
+            } else if (update.hasCallbackQuery()) {
                 handleCallbackQuery(update.getCallbackQuery());
             }
         } catch (TelegramApiException e) {
@@ -68,9 +66,7 @@ public class EnhancedYesNoBot extends TelegramLongPollingBot {
             sendMessageWithButtons(chatId);
             return;
         }
-        //Обработка других команд здесь, если нужно
-
-        // Обработка обычных сообщений
+    
         if (messageText.endsWith("?")) {
             String response = getRandomResponse();
             SendMessage message = new SendMessage();
@@ -104,9 +100,9 @@ public class EnhancedYesNoBot extends TelegramLongPollingBot {
             String response = "GitHub: " + githubLink + "\nTelegram: @" + telegramUsername;
             EditMessageText editMessage = new EditMessageText();
             editMessage.setChatId(chatId);
-            editMessage.setMessageId(messageId); // Добавлено
+            editMessage.setMessageId(messageId);
             editMessage.setText(response);
-            execute(editMessage); // Исправлено
+            execute(editMessage);
         }
     }
 
@@ -143,7 +139,7 @@ public class EnhancedYesNoBot extends TelegramLongPollingBot {
 
     public static void main(String[] args) {
         String botUsername = "ToosieSlideBot";
-        String botToken = "7014038472:AAFnKWIel-vrCMuOk_bW2x-YF3_m5tZ1eAI";
+        String botToken = "";
         EnhancedYesNoBot bot = new EnhancedYesNoBot(botUsername, botToken);
         try {
             TelegramBotsApi botsApi = new TelegramBotsApi(DefaultBotSession.class);
