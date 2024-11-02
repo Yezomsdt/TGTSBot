@@ -54,9 +54,8 @@ public class YesNoBot extends TelegramLongPollingBot {
     }
 
     public static void main(String[] args) {
-        // Замените на ваш username и token
         String botUsername = "ToosieSlideBot";
-        String botToken = "7014038472:AAFnKWIel-vrCMuOk_bW2x-YF3_m5tZ1eAI";
+        String botToken = "";
         YesNoBot bot = new YesNoBot(botUsername, botToken);
         try {
             TelegramBotsApi botsApi = new TelegramBotsApi(DefaultBotSession.class);
