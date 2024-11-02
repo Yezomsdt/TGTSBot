@@ -61,8 +61,7 @@ public class ImprovedYesNoBot extends TelegramLongPollingBot {
 
     private void handleError(TelegramApiException e, Update update) {
         System.err.println("Error processing update: " + update.toString() + "\nError message: " + e.getMessage());
-        // Можно добавить логирование или отправку уведомления администратору
-    }
+          }
 
     private String getRandomAnswer() {
         Random random = new Random();
@@ -81,13 +80,13 @@ public class ImprovedYesNoBot extends TelegramLongPollingBot {
         try {
             execute(message);
         } catch (TelegramApiException e) {
-            handleError(e, null); // Обработка ошибки при отправке сообщения
+            handleError(e, null);
         }
     }
 
     public static void main(String[] args) {
         String botUsername = "ToosieSlideBot";
-        String botToken = "7014038472:AAFnKWIel-vrCMuOk_bW2x-YF3_m5tZ1eAI";
+        String botToken = "";
         ImprovedYesNoBot bot = new ImprovedYesNoBot(botUsername, botToken);
         try {
             TelegramBotsApi botsApi = new TelegramBotsApi(DefaultBotSession.class);
